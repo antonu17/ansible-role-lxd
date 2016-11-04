@@ -1,0 +1,17 @@
+---
+  - name: Add lxd repository
+    apt_repository: repo='ppa:ubuntu-lxc/lxd-stable' state=present
+
+  - name: Install packages
+    apt: pkg={{ item }} state=installed update_cache=true
+    with_items:
+      - lxd
+      - zfsutils-linux
+
+  - name: Setup lxd-bridge
+    template: src=lxd-bridbe.j2 dest=/etc/default/lxd-bridge owner=root group=root
+    notify: Restart lxd-bridge
+
+  - name: Setup lxd
+    command: lxd init --auto --storage-backend zfs --storage-create-loop 50 --storage-pool lxd creates=/var/lib/lxd/zfs.img
+    notify: Restart lxd

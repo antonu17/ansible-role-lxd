@@ -1,0 +1,6 @@
+---
+- name: Restart lxd-bridge
+  service: name=lxd-bridge state=restarted
+
+- name: Restart lxd
+  service: name=lxd state=restarted

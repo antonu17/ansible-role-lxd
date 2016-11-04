@@ -1,0 +1,9 @@
+---
+lxd_bridge: lxdbr0
+lxd_domain: lxd
+lxd_ipv4_addr: 10.96.135.1
+lxd_ipv4_netmask: 255.255.255.0
+lxd_ipv4_network: 10.96.135.0
+lxd_ipv4_dhcp_range: 10.96.135.2,10.96.135.254
+lxd_ipv4_dhcp_max: 252
+lxd_ipv4_nat: "true"
