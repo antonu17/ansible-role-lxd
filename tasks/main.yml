@@ -15,3 +15,6 @@
   - name: Setup lxd
     command: lxd init --auto --storage-backend zfs --storage-create-loop 50 --storage-pool lxd creates=/var/lib/lxd/zfs.img
     notify: Restart lxd
+
+  - name: enable lxd service
+    service: name=lxd enabled=yes state=started
